@@ -23,4 +23,9 @@
 
         Console.WriteLine(menu);
     }
+
+    public void cargarArchivos() { }
+    public void ejecutarMisiones() { }
+    public void MisionRescate() { }
+    public void MisionExtraccion() { }
 }
