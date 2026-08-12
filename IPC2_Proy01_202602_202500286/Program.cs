@@ -29,3 +29,26 @@
     public void MisionRescate() { }
     public void MisionExtraccion() { }
 }
+
+public class ChapinRobots {
+    private String nombre { get; set; }
+    private bool estado { get; set; }
+
+    public ChapinRobots(String nombre) 
+    {
+        this.nombre = nombre;
+        this.estado = true;
+    }
+}
+
+public class ChapinRescue : ChapinRobots {
+    public ChapinRescue(String nombre, bool estado): base(nombre) {}
+    public void rescatar() { 
+    }
+}
+
+public class ChapinFighter : ChapinRobots {
+    public ChapinFighter(String nombre, bool estado): base(nombre) { }
+    public void extraer() { }
+    public void combatir() { }
+}
