@@ -12,11 +12,12 @@ namespace IPC2_Proy01_202602_202500286.Modelo
         private int columnas { get; set; } //iteraciones para crear celdas 
         private Listas ListaFilas; //Puntero para saber la lista de esta ciudad
 
-        public Ciudades(String nombre, int filas, int columnas)
+        public Ciudades(String nombre, int filas, int columnas, Listas ListaFilas)
         {
             this.nombre = nombre;
             this.filas = filas;
             this.columnas = columnas;
+            this.ListaFilas = ListaFilas;
         }
     }
 }
