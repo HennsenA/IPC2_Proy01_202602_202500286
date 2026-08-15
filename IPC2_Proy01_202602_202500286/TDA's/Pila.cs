@@ -7,12 +7,12 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
     internal class Pila
     {
         private int maxsize;
-        private Nodo[] nodos;
+        private Nodo<NodoCeldas>[] nodos;
         private int tope;
 
         public Pila(int maxsize) { //Numero de nodos 
             this.maxsize = maxsize;
-            this.nodos = new Nodo[maxsize];
+            this.nodos = new Nodo<NodoCeldas>[maxsize];
             this.tope = -1;
         }
 
@@ -31,7 +31,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             return false;
         }
 
-        public void Push(Nodo nodo) {
+        public void Push(Nodo<NodoCeldas> nodo) {
             if (PilaLlena() == true)
             {
 
@@ -46,8 +46,8 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             }
         }
 
-        public Nodo Pop() {
-            Nodo nodo;
+        public Nodo<NodoCeldas> Pop() {
+            Nodo<NodoCeldas> nodo;
             if (PilaVacia() == true)
             {
                 Console.WriteLine("Error: No hay elementos en la pila");
