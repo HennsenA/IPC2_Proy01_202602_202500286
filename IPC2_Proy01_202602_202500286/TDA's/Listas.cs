@@ -24,7 +24,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             return default(T);
         }
 
-        public void reemplazar(String nombre) { 
+        public void Reemplazar(T elemento) { 
         
         }
 

@@ -3,15 +3,21 @@
 namespace IPC2_Proy01_202602_202500286;
 
 public class Sistema { 
-    public static void main(string[] args)
+    public static void Main(string[] args)
     {
-        ManejoXML obj = new ManejoXML();
+        bool estado;
+        String ruta = "C:\\Users\\Dell\\Documents\\IPC2\\Proyecto1\\IPC2_Proy01_202602_202500286\\XML\\configuracion_prueba.xml";
+        ManejoXML obj = new ManejoXML(ruta);
+        estado = obj.CargaArchivo();
+        Console.WriteLine(estado);
 
-        int option = 1;
+        obj.CargarCiudades();
+
+        /*int option = 1;
         while (option > 0) {
             mostrarMenu();
             option = int.Parse(Console.ReadLine());
-        }
+        }*/
     }
 
     public static void mostrarMenu() {

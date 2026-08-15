@@ -10,17 +10,15 @@ namespace IPC2_Proy01_202602_202500286.Modelo
         private String nombre { get; set; }
         private int filas {  get; set; } //iteraciones para crear filas
         private int columnas { get; set; } //iteraciones para crear celdas 
-        private NodoCeldas ListaFilas; //Puntero para saber la lista de esta ciudad
 
-        public Ciudades(String nombre, int filas, int columnas, NodoCeldas ListaFilas)
+        public Ciudades(String nombre, int filas, int columnas)
         {
             this.nombre = nombre;
             this.filas = filas;
             this.columnas = columnas;
-            this.ListaFilas = ListaFilas;
         }
 
-        public void CrearMalla()
+        public void CrearMalla(char[][] caracteres)
         {
 
         }
