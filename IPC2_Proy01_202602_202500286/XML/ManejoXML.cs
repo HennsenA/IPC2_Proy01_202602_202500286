@@ -49,7 +49,7 @@ namespace IPC2_Proy01_202602_202500286.XML
         {
             try
             {
-                var nodosCiudad = doc.Root.Elements("listaCiudades").Elements("ciudad");
+                var nodosCiudad = doc.Root.Element("listaCiudades").Elements("ciudad");
 
                 if (nodosCiudad == null) { Console.WriteLine("Error: No hay elementos de ciudad en el archivo"); return; }
 
@@ -98,8 +98,60 @@ namespace IPC2_Proy01_202602_202500286.XML
                 Console.WriteLine("Error: No se encontro el objeto ciudad o no existe");
             }
         }
-        public void CargarRobots()
+        public void CargarRobots(Listas<ChapinRobots> ListaRobots)
         {
+            try
+            {
+                //String datos;
+                /*datos = 
+                       $"""
+
+                       Robot
+                       nombre:               {nombre}
+                       tipo:                 {tipo}
+                       Capacidad de combate: {capcomb}
+
+                       """;
+
+                   Console.WriteLine(datos);*/
+
+                var nodoRobots = doc.Root.Element("robots").Elements("robot");
+                if (nodoRobots == null)
+                {
+                    Console.WriteLine("Error: No se encontraron los Robots o no existen");
+                    return;
+                }
+
+                foreach(XElement robots in nodoRobots)
+                {
+                    XElement nodoNombre = robots.Element("nombre");
+                    String nombre = nodoNombre.Value;
+                    String tipo = nodoNombre.Attribute("tipo").Value;
+                    String capacidad; 
+                    int capcomb = 0;
+
+                    if(nodoNombre.Attribute("capacidad")!=null)
+                    {
+                        capacidad = nodoNombre.Attribute("capacidad").Value;
+                        capcomb = int.Parse(capacidad);
+                    }
+
+                    if (tipo.Equals("ChapinRescue"))
+                    {
+                        ChapinRescue RescueRobot = new ChapinRescue(nombre, capcomb);
+                        ListaRobots.Insertar(RescueRobot);
+                    }
+                    else
+                    {
+                        ChapinFighter FighterRobot = new ChapinFighter(nombre, capcomb);
+                        ListaRobots.Insertar(FighterRobot);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
           
         }
     }
