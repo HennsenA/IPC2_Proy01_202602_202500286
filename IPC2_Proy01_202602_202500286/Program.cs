@@ -1,4 +1,5 @@
-﻿using IPC2_Proy01_202602_202500286.XML;
+﻿using IPC2_Proy01_202602_202500286.TDA_s;
+using IPC2_Proy01_202602_202500286.XML;
 
 namespace IPC2_Proy01_202602_202500286;
 
@@ -11,7 +12,14 @@ public class Sistema {
         estado = obj.CargaArchivo();
         Console.WriteLine(estado);
 
-        obj.CargarRobots();
+        Listas<int> listaNumeros = new Listas<int>();
+        listaNumeros.Insertar(2);
+        listaNumeros.Insertar(3);
+        listaNumeros.Insertar(4);
+        listaNumeros.Insertar(5);
+        listaNumeros.Insertar(6);
+
+        listaNumeros.Imprimir();
 
         /*int option = 1;
         while (option > 0) {
