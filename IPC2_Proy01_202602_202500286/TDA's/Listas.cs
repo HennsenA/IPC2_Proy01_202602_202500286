@@ -11,7 +11,6 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 
         public void Insertar(T valor)
         {
-            bool insertado = false;
             Nodo<T> nuevo = new Nodo<T>(valor);
 
             if (inicio == null)
@@ -21,50 +20,51 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             else
             {
                 var actual = inicio;
+
                 while (actual.siguiente != null)
                 {
+                    if (actual.siguiente.Equals(nuevo))//Reemplazo en caso de repetirse el objeto ciudad
+                    {
+                        actual.siguiente = nuevo;
+                        return;
+                    }
                     actual = actual.siguiente;
                 }
-                actual.siguiente = nuevo;
+                actual.siguiente = nuevo;//Insercion de nuevo elemento
             }
         }
 
-        public void Imprimir()
+        public virtual void ImprimirNodo()
         {
-            var actual = inicio;
+        }
 
-            while (actual != null)
+        public Nodo<T> Buscar(int indice)
+        {
+            var actual=inicio;
+
+            for(int i =0; i<indice; i++)
             {
-                Console.Write(actual.valor + " ");
                 actual = actual.siguiente;
             }
-            Console.WriteLine();
+
+            return actual;
         }
 
-        public T Buscar(T valor)
+        public bool Existe(int indice)
         {
             var actual = inicio;
-            while (actual != null){
-                if (actual.valor.Equals(valor)){
-                    var encontrado = actual.valor;
-                    return encontrado;
-                }
-                else
-                {
-                    actual = actual.siguiente;
-                }
+
+            for (int i = 0; i < indice; i++)
+            {
+                actual = actual.siguiente;
             }
 
-            return valor;
-        }
+            if(actual != null)
+            {
+                return true;
+            }
 
-        public void Reemplazar(T elemento) { 
-        
-        }
-
-        public bool Existe(String nombre)
-        {
-            return true;
+            return false ;
         }
     }
 }

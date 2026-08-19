@@ -1,4 +1,5 @@
-﻿using IPC2_Proy01_202602_202500286.TDA_s;
+﻿using IPC2_Proy01_202602_202500286.Modelo;
+using IPC2_Proy01_202602_202500286.TDA_s;
 using IPC2_Proy01_202602_202500286.XML;
 
 namespace IPC2_Proy01_202602_202500286;
@@ -12,14 +13,14 @@ public class Sistema {
         estado = obj.CargaArchivo();
         Console.WriteLine(estado);
 
-        Listas<int> listaNumeros = new Listas<int>();
-        listaNumeros.Insertar(2);
-        listaNumeros.Insertar(3);
-        listaNumeros.Insertar(4);
-        listaNumeros.Insertar(5);
-        listaNumeros.Insertar(6);
+        ListaRobots ListaRobots = new ListaRobots();
+        ListaCiudades ListaCiudades = new ListaCiudades();
 
-        listaNumeros.Imprimir();
+        //obj.CargarRobots(ListaRobots);
+        obj.CargarCiudades(ListaCiudades);
+
+        //ListaRobots.ImprimirNodo();
+        ListaCiudades.ImprimirNodo();
 
         /*int option = 1;
         while (option > 0) {

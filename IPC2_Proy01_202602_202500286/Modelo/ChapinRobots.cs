@@ -21,5 +21,19 @@ namespace IPC2_Proy01_202602_202500286.Modelo
         {
             estado = !estado;
         }
+
+        public void ImprimirRobot()
+        {
+            string datos =
+                $"""
+
+                Robot:             {nombre}
+                Capacidad Combate: {capcomb} (ChapinRescue=0, ChapinFighter > 0)
+                Estado:            {estado} (Disponible = true, NoDisponible = false)
+
+                """;
+
+            Console.WriteLine(datos);
+        }
     }
 }

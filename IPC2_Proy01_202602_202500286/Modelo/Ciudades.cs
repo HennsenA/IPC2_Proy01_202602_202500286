@@ -18,6 +18,20 @@ namespace IPC2_Proy01_202602_202500286.Modelo
             this.columnas = columnas;
         }
 
+        public void ImprimirCiudad()
+        {
+            string datos = 
+                $"""
+
+                Ciudad: {nombre}
+                No. Filas: {filas}
+                No. Columnas: {columnas}
+
+                """;
+
+            Console.WriteLine(datos);
+        }
+
         public void CrearMalla(char[][] caracteres)
         {
 

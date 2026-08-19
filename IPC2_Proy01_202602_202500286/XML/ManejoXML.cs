@@ -45,7 +45,7 @@ namespace IPC2_Proy01_202602_202500286.XML
                 return false;
             }
         }
-        public void CargarCiudades(Listas<Ciudades> ListaCiudades)
+        public void CargarCiudades(ListaCiudades ListaCiudades)
         {
             try
             {
@@ -83,14 +83,8 @@ namespace IPC2_Proy01_202602_202500286.XML
                          Celda UnidadMilitar = new Celda(capacidad, f, c);
                      }
 
-                     if (ListaCiudades.Existe(nombreCiudad))
-                    {
-                        ListaCiudades.Reemplazar(ciudad);
-                    }
-                    else
-                    {
-                        ListaCiudades.Insertar(ciudad);
-                    }
+                    ListaCiudades.Insertar(ciudad);
+                    Console.WriteLine("Ciudades cargadas!");
                 }
             }
             catch (System.IO.IOException e)
@@ -98,7 +92,7 @@ namespace IPC2_Proy01_202602_202500286.XML
                 Console.WriteLine("Error: No se encontro el objeto ciudad o no existe");
             }
         }
-        public void CargarRobots(Listas<ChapinRobots> ListaRobots)
+        public void CargarRobots(ListaRobots ListaRobots)
         {
             try
             {
@@ -147,6 +141,8 @@ namespace IPC2_Proy01_202602_202500286.XML
                         ListaRobots.Insertar(FighterRobot);
                     }
                 }
+
+                Console.WriteLine("Robots cargados!");
             }
             catch (Exception e)
             {
