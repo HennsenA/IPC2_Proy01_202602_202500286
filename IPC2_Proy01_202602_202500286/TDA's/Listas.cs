@@ -54,7 +54,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
         {
             var actual = inicio;
 
-            for (int i = 0; i < indice; i++)
+            for (int i = 0; i < indice-1; i++)
             {
                 actual = actual.siguiente;
             }
