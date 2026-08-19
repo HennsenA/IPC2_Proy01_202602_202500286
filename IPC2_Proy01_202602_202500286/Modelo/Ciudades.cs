@@ -34,7 +34,10 @@ namespace IPC2_Proy01_202602_202500286.Modelo
 
         public void CrearMalla(char[][] caracteres)
         {
-
+            for (int i = 0; i < caracteres.Length; i++)
+            {
+                Console.WriteLine(caracteres[i]);
+            }
         }
         public void VerMalla()
         {
