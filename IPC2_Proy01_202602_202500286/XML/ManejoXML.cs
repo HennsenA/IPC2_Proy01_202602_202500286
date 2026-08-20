@@ -72,7 +72,7 @@ namespace IPC2_Proy01_202602_202500286.XML
                      }
 
                      Ciudades ciudad = new Ciudades(nombreCiudad, filas, columnas);
-                     ciudad.CrearMalla(caracteres);
+                     ciudad.CrearMalla(caracteres, columnas);
 
                      // Creacion de las Unidades de Combate
                      foreach (XElement nodoUnidadMilitar in nodoCiudad.Elements("unidadMilitar"))
@@ -81,7 +81,9 @@ namespace IPC2_Proy01_202602_202500286.XML
                          int c = int.Parse(nodoUnidadMilitar.Attribute("columna").Value);
                          int capacidad = int.Parse(nodoUnidadMilitar.Value.Trim());
                          Celda UnidadMilitar = new Celda(capacidad, f, c);
-                     }
+
+                        ciudad.InsertarUM(UnidadMilitar);
+                    }
 
                     ListaCiudades.Insertar(ciudad);
                     Console.WriteLine("Ciudades cargadas!");
