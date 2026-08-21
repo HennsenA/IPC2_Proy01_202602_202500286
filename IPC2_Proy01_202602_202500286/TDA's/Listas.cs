@@ -66,5 +66,19 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 
             return false ;
         }
+
+        public int NoElementos()
+        {
+            var actual = inicio;
+            int contador = 0;
+
+            while (actual != null)
+            {
+                contador++;
+                actual = actual.siguiente;
+            }
+
+            return contador;
+        }
     }
 }

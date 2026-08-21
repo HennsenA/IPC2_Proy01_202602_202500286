@@ -7,10 +7,10 @@ namespace IPC2_Proy01_202602_202500286.Modelo
 {
     public class Celda
     {
-        private int capcomb {  get; set; }
-        private char tipo { get; set; }
-        private int columna {  get; set; } 
-        private int fila {  get; set; }
+        public int capcomb {  get; set; }
+        public char tipo { get; set; }
+        public int columna {  get; set; } 
+        public int fila {  get; set; }
 
         public Celda(char tipo, int columna, int fila)
         {
