@@ -37,6 +37,7 @@ namespace IPC2_Proy01_202602_202500286.XML
             catch(System.IO.IOException e)
             {
                 Console.WriteLine("Error: El archivo no se encontro o no es correcta la ruta");
+                Console.WriteLine(e);
                 return false;
             }
             catch (System.Xml.XmlException)

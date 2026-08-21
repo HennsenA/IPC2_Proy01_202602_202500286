@@ -1,32 +1,37 @@
 ﻿using IPC2_Proy01_202602_202500286.Modelo;
 using IPC2_Proy01_202602_202500286.TDA_s;
 using IPC2_Proy01_202602_202500286.XML;
+using System.Runtime.InteropServices.Marshalling;
 
 namespace IPC2_Proy01_202602_202500286;
 
-public class Sistema { 
+public class Sistema {
+    public ListaRobots ListaRobots;
+    public ListaCiudades ListaCiudades;
+
+    public Sistema()
+    {
+        ListaRobots= new ListaRobots();
+        ListaCiudades= new ListaCiudades();
+    }
+
     public static void Main(string[] args)
     {
-        bool estado;
-        String ruta = "C:\\Users\\Dell\\Documents\\Universidad\\IPC2\\Proyecto1\\IPC2_Proy01_202602_202500286\\XML\\configuracion_prueba.xml";
-        ManejoXML obj = new ManejoXML(ruta);
-        estado = obj.CargaArchivo();
-        Console.WriteLine(estado);
+        Sistema metodos = new Sistema();
 
-        ListaRobots ListaRobots = new ListaRobots();
-        ListaCiudades ListaCiudades = new ListaCiudades();
-
-        //obj.CargarRobots(ListaRobots);
-        obj.CargarCiudades(ListaCiudades);
-
-        //ListaRobots.ImprimirNodo();
-        ListaCiudades.ImprimirNodo();
-
-        /*int option = 1;
+        int option = 1;
         while (option > 0) {
             mostrarMenu();
             option = int.Parse(Console.ReadLine());
-        }*/
+
+            switch (option)
+            {
+                case 1:
+                    metodos.cargarArchivos();
+                break;
+                
+            }
+        }
     }
 
     public static void mostrarMenu() {
@@ -45,7 +50,31 @@ public class Sistema {
         Console.WriteLine(menu);
     }
 
-    public void cargarArchivos() { }
+    public void cargarArchivos()
+    {
+        String ruta = "";
+        Console.WriteLine("Ingrese la ruta del archivo: ");
+
+        while (ruta=="" || ruta==null)
+        {
+            ruta = Console.ReadLine();
+            if (ruta == "" || ruta == null)
+            {
+                Console.WriteLine("Error: ruta vacia, ingrese de nuevo");
+            }
+        }
+
+        ManejoXML UsoXml = new ManejoXML(ruta);
+        bool estado = UsoXml.CargaArchivo();
+        if (estado == false)
+        {
+            Console.WriteLine("Error: No se cargo el archivo");
+            return;
+        }
+
+        UsoXml.CargarRobots(ListaRobots);
+        UsoXml.CargarCiudades(ListaCiudades);
+    }
     public void ejecutarMisiones() { }
     public void MisionRescate() { }
     public void MisionExtraccion() { }
