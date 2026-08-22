@@ -27,11 +27,31 @@ namespace IPC2_Proy01_202602_202500286.Modelo
             this.tipo = 'U';
         }
 
-        public void SetTipo()
-        {
-            
+        public bool Transitable(int CapacidadR) {
+            switch (tipo)
+            {
+                case '*':
+                    return false;
+                case ' ':
+                    return true;
+                case 'E':
+                    return true;
+                case 'C':
+                    return true;
+                case 'R':
+                    return false;
+                case 'U':
+                    if (CapacidadR >= capcomb)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                default:
+                    return false;
+            }
         }
-
-        public bool Transitable() { return false;  }
     }
 }

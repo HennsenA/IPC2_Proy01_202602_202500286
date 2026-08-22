@@ -8,7 +8,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
     public class NodoCeldas
     {
         public Celda celda { get;}
-        private NodoCeldas arriba, abajo;
+        public NodoCeldas arriba, abajo;
         public NodoCeldas izquierda, derecha;
 
         public NodoCeldas(Celda celda)
