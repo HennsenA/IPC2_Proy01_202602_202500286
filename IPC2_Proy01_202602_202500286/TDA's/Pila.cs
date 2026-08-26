@@ -16,7 +16,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             this.tope = -1;
         }
 
-        private bool PilaLlena() {
+        public bool PilaLlena() {
             if (tope==maxsize-1) {
                 return true;
             }
@@ -24,7 +24,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             return false;
         }
 
-        private bool PilaVacia() {
+        public bool PilaVacia() {
             if (tope == -1) {
                 return true;
             }
@@ -41,7 +41,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             else {
                 tope++;
                 nodos[tope] = nodo;
-                Console.WriteLine("Nodo insertado!");
+                //Console.WriteLine("Nodo insertado!");
                 return;
             }
         }

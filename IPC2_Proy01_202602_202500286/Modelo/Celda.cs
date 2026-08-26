@@ -27,7 +27,7 @@ namespace IPC2_Proy01_202602_202500286.Modelo
             this.tipo = 'U';
         }
 
-        public bool Transitable(int CapacidadR) {
+        public bool Transitable(int CapacidadR, int mision) {
             switch (tipo)
             {
                 case '*':
@@ -39,7 +39,14 @@ namespace IPC2_Proy01_202602_202500286.Modelo
                 case 'C':
                     return true;
                 case 'R':
-                    return false;
+                    if (mision == 1) //1 = rescate  1 != extraccion
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
                 case 'U':
                     if (CapacidadR >= capcomb)
                     {

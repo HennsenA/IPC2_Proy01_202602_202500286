@@ -50,18 +50,18 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             return actual;
         }
 
-        public bool Existe(int indice)
+        public bool Existe(T valor)
         {
             var actual = inicio;
 
-            for (int i = 0; i < indice-1; i++)
+            while (actual != null)
             {
-                actual = actual.siguiente;
-            }
+                if(actual.valor.Equals(valor))
+                {
+                    return true;
+                }
 
-            if(actual != null)
-            {
-                return true;
+                actual = actual.siguiente;
             }
 
             return false ;

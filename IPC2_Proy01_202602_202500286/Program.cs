@@ -29,7 +29,9 @@ public class Sistema {
                 case 1:
                     metodos.cargarArchivos();
                 break;
-                
+                case 2:
+                    metodos.ejecutarMisiones();
+                    break;
             }
         }
     }
@@ -75,7 +77,32 @@ public class Sistema {
         UsoXml.CargarRobots(ListaRobots);
         UsoXml.CargarCiudades(ListaCiudades);
     }
-    public void ejecutarMisiones() { }
+    public void ejecutarMisiones() {
+        Console.WriteLine("Ejecutando mision de rescate...");
+        try
+        {
+            ListaCiudades.ImprimirNodo();
+            NodoCeldas dfs = ListaCiudades.Buscar(0).valor.PrimeraCelda;
+            int TamanioMapa = ListaCiudades.Buscar(0).valor.filas * ListaCiudades.Buscar(0).valor.columnas;
+            Listas<NodoCeldas> ListaEntradas = ListaCiudades.Buscar(0).valor.BuscarCelda(1);
+            Listas<NodoCeldas> ListaRecursos = ListaCiudades.Buscar(0).valor.BuscarCelda(2);
+            Listas<NodoCeldas> ListaCiviles = ListaCiudades.Buscar(0).valor.BuscarCelda(3);
+            Random rnd = new Random();
+            int NoEntradas = ListaEntradas.NoElementos();
+            int NoRecursos = ListaRecursos.NoElementos();
+            int NoCiviles = ListaCiviles.NoElementos();
+
+            Console.WriteLine("No. Entradas: " + NoEntradas);
+            Console.WriteLine("No. Recursos: " + NoRecursos);
+
+            dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, ListaRecursos.Buscar(rnd.Next(NoRecursos)).valor, 50, 2);
+
+            /*Console.WriteLine("Camino encontrado con exito!");*/
+        }
+        catch (Exception) {
+            Console.WriteLine("Error: No hay ciudades en la lista");
+        }
+    }
     public void MisionRescate() { }
     public void MisionExtraccion() { }
 }
