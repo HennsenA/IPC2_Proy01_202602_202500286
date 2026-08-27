@@ -94,8 +94,9 @@ public class Sistema {
 
             Console.WriteLine("No. Entradas: " + NoEntradas);
             Console.WriteLine("No. Recursos: " + NoRecursos);
+            Console.WriteLine("No. Civiles: " + NoCiviles);
 
-            dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, ListaRecursos.Buscar(rnd.Next(NoRecursos)).valor, 50, 2);
+            dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, ListaCiviles.Buscar(rnd.Next(NoCiviles)).valor, 0, 1);
 
             /*Console.WriteLine("Camino encontrado con exito!");*/
         }

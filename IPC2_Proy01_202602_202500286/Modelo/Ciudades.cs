@@ -51,7 +51,7 @@ namespace IPC2_Proy01_202602_202500286.Modelo
 
                 for (int j = 0; j < columnas; j++)
                 {
-                    NodoCeldas nodo = new NodoCeldas(new Celda(caracteres[i][j], i, j));
+                    NodoCeldas nodo = new NodoCeldas(new Celda(caracteres[i][j], j, i));
 
                     // Enlazar horizontalmente con la celda a su izquierda
                     if (nodoIzquierdo != null)
@@ -85,8 +85,30 @@ namespace IPC2_Proy01_202602_202500286.Modelo
 
         public void InsertarUM(Celda UnidadMilitar)
         {
-            NodoCeldas NodoUM = new NodoCeldas(UnidadMilitar);
-            ListaUM.Insertar(NodoUM);
+            int fila = UnidadMilitar.fila;
+            int columna = UnidadMilitar.columna;
+
+            Console.WriteLine($"fila: {fila}, columna: {columna}, capacidad: {UnidadMilitar.capcomb}");
+
+            NodoCeldas inicioFila = PrimeraCelda;
+
+            while (inicioFila != null)
+            {
+                NodoCeldas actual = inicioFila;
+
+                while (actual != null)
+                { 
+                    if(actual.celda.fila == fila-1 && actual.celda.columna == columna-1)
+                    {
+                        //Reemplazar datos de la celda en esta posicion por los datos de UM
+                        actual.celda.capcomb = UnidadMilitar.capcomb;
+                        actual.celda.tipo = 'U';
+                    }
+                    actual = actual.Derecha;
+                }
+
+                inicioFila = inicioFila.Abajo;
+            }
 
             //Console.WriteLine("Unidad militar registrada");
         }

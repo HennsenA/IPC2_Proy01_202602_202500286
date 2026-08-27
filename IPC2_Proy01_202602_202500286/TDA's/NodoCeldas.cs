@@ -7,7 +7,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 {
     public class NodoCeldas
     {
-        public Celda celda { get;}
+        public Celda celda { get; set; }
         public NodoCeldas Arriba, Abajo;
         public NodoCeldas Izquierda, Derecha;
         public NodoCeldas Padre;
@@ -26,7 +26,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
         {
             Pila pila = new Pila(MaxSize);
             Listas<NodoCeldas> visitados = new Listas<NodoCeldas>();
-
+            int CapacidadRestante = CapacidadR;
             pila.Push(CeldaInicio);
             visitados.Insertar(CeldaInicio);
 
@@ -43,16 +43,25 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 
                 /*Console.WriteLine(
                     $"""
-                        Fila: {actual.celda.fila}
-                        Columna: {actual.celda.columna}
+                        Celda Actual
+
+                        Fila: {actual.celda.fila+1}
+                        Columna: {actual.celda.columna+1}
+                        Capacidad: {actual.celda.capcomb}
+                        Tipo: {actual.celda.tipo}
                     """);*/
 
                 // Condicion de llegada
                 if (actual.celda.fila == CeldaDestino.celda.fila && actual.celda.columna == CeldaDestino.celda.columna)
                 {
                     MostrarCamino(actual, MaxSize);
-                    Console.WriteLine("Capacidad de Combate final: "+CapacidadR);
+                    Console.WriteLine("Capacidad de Combate final: "+CapacidadRestante);
                     return;
+                }
+
+                if (actual.celda.capcomb > 0)
+                {
+                    CapacidadRestante -= actual.celda.capcomb;
                 }
 
                 NodoCeldas[] vecinos = { actual.Arriba, actual.Abajo, actual.Izquierda, actual.Derecha };
@@ -60,11 +69,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 foreach (NodoCeldas vecino in vecinos)
                 {
                     if (vecino != null && vecino.celda.Transitable(CapacidadR, mision) && !visitados.Existe(vecino))
-                    {
-                        if (vecino.celda.capcomb > 0)
-                        {
-                            CapacidadR-=vecino.celda.capcomb;
-                        }
+                    { 
                         vecino.Padre = actual; 
                         visitados.Insertar(vecino);
                         pila.Push(vecino);
@@ -89,7 +94,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             while (!camino.PilaVacia())
             {
                 NodoCeldas nodo = camino.Pop();
-                Console.WriteLine($"({nodo.celda.fila},{nodo.celda.columna})");
+                Console.WriteLine($"({nodo.celda.fila+1},{nodo.celda.columna+1}) capcomb: {nodo.celda.capcomb}");
             }
         }
     }

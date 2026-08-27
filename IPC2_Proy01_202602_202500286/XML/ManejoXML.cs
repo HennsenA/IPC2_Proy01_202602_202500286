@@ -80,7 +80,7 @@ namespace IPC2_Proy01_202602_202500286.XML
                          int f = int.Parse(nodoUnidadMilitar.Attribute("fila").Value);
                          int c = int.Parse(nodoUnidadMilitar.Attribute("columna").Value);
                          int capacidad = int.Parse(nodoUnidadMilitar.Value.Trim());
-                         Celda UnidadMilitar = new Celda(capacidad, f, c);
+                         Celda UnidadMilitar = new Celda(capacidad, c, f);
 
                         ciudad.InsertarUM(UnidadMilitar);
                     }
