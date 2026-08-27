@@ -1,4 +1,5 @@
-﻿using IPC2_Proy01_202602_202500286.Modelo;
+﻿using IPC2_Proy01_202602_202500286.Modelado_Misiones;
+using IPC2_Proy01_202602_202500286.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -22,10 +23,12 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             this.Padre = null;
         }
 
-        public void Dfs(int MaxSize, NodoCeldas CeldaInicio, NodoCeldas CeldaDestino, int CapacidadR, int mision)
+        public Listas<NodoCeldas> Dfs(int MaxSize, NodoCeldas CeldaInicio, NodoCeldas CeldaDestino, int CapacidadR, int mision)
         {
+            Misiones Grafica = new Misiones();
             Pila pila = new Pila(MaxSize);
             Listas<NodoCeldas> visitados = new Listas<NodoCeldas>();
+            Listas<NodoCeldas> ListaCamino;
             int CapacidadRestante = CapacidadR;
             pila.Push(CeldaInicio);
             visitados.Insertar(CeldaInicio);
@@ -54,9 +57,9 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 // Condicion de llegada
                 if (actual.celda.fila == CeldaDestino.celda.fila && actual.celda.columna == CeldaDestino.celda.columna)
                 {
-                    MostrarCamino(actual, MaxSize);
+                    ListaCamino = MostrarCamino(actual, MaxSize);
                     Console.WriteLine("Capacidad de Combate final: "+CapacidadRestante);
-                    return;
+                    return ListaCamino;
                 }
 
                 if (actual.celda.capcomb > 0)
@@ -78,10 +81,12 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             }
 
             Console.WriteLine("Misión Imposible");
+            return ListaCamino=new Listas<NodoCeldas>();
         }
 
-        private void MostrarCamino(NodoCeldas destino, int MaxSize)
+        private Listas<NodoCeldas> MostrarCamino(NodoCeldas destino, int MaxSize)
         {
+            Listas<NodoCeldas> ListaCamino = new Listas<NodoCeldas>();
             Pila camino = new Pila(MaxSize);
             NodoCeldas actual = destino;
 
@@ -95,10 +100,13 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             while (!camino.PilaVacia())
             {
                 NodoCeldas nodo = camino.Pop();
+                ListaCamino.Insertar(nodo);
                 Console.WriteLine($"({nodo.celda.fila+1},{nodo.celda.columna+1}) capcomb: {nodo.celda.capcomb}");
             }
 
             Console.WriteLine();
+
+            return ListaCamino;
         }
     }
 }

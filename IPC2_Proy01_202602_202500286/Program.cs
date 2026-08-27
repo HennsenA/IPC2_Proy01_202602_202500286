@@ -1,7 +1,9 @@
-﻿using IPC2_Proy01_202602_202500286.Modelo;
+﻿using IPC2_Proy01_202602_202500286.Modelado_Misiones;
+using IPC2_Proy01_202602_202500286.Modelo;
 using IPC2_Proy01_202602_202500286.TDA_s;
 using IPC2_Proy01_202602_202500286.XML;
 using System.Diagnostics;
+using System.Globalization;
 using System.Runtime.InteropServices.Marshalling;
 
 namespace IPC2_Proy01_202602_202500286;
@@ -155,6 +157,7 @@ public class Sistema {
 
         //DATOS DE LA CIUDAD
         NodoCeldas dfs = ciudad.PrimeraCelda; //Celda de referencia para dfs (no es la inicial)
+        Misiones Grafica = new Misiones();
         int TamanioMapa = ciudad.filas * ciudad.columnas;
         Random rnd = new Random();
         int NoEntradas = ListaEntradas.NoElementos();
@@ -212,7 +215,12 @@ public class Sistema {
         }
         NodoCeldas Civil = ListaCiviles.Buscar(NoCivil).valor;
 
-        dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, Civil, Robot.capcomb, mision);
+        Listas<NodoCeldas> ListaCamino = dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, Civil, Robot.capcomb, mision);
+
+        string ArchivoDot = Grafica.GenerarDot(ciudad.PrimeraCelda, ListaCamino);
+        string RutaImgs = "C:\\Users\\Dell\\Documents\\Universidad\\IPC2\\Proyecto1\\IPC2_Proy01_202602_202500286\\Modelado Misiones\\mision_rescate.png";
+        Grafica.GenerarImagenMision(ArchivoDot, RutaImgs);
+        Process.Start(new ProcessStartInfo(RutaImgs) { UseShellExecute = true });
     }
 
     public void MisionExtraccion(int mision, Ciudades ciudad, Listas<NodoCeldas> ListaEntradas, Listas<NodoCeldas> ListaRecursos)
