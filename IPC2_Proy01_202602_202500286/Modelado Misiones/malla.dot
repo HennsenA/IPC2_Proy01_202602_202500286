@@ -5,52 +5,52 @@ digraph Malla {
   ranksep=0.05;
   node [shape=square, style=filled, fixedsize=true, width=0.5, height=0.5, label=""];
   { rank=same; 
-    c0_0 [fillcolor="black"];
-    c0_1 [fillcolor="black"];
-    c0_2 [fillcolor="black"];
-    c0_3 [fillcolor="black"];
-    c0_4 [fillcolor="black"];
-    c0_5 [fillcolor="black"];
+    c0_0 [fillcolor="black" label=""];
+    c0_1 [fillcolor="black" label=""];
+    c0_2 [fillcolor="black" label=""];
+    c0_3 [fillcolor="black" label=""];
+    c0_4 [fillcolor="black" label=""];
+    c0_5 [fillcolor="black" label=""];
   }
   { rank=same; 
-    c1_0 [fillcolor="black"];
-    c1_1 [fillcolor="green"];
-    c1_2 [fillcolor="white"];
-    c1_3 [fillcolor="white"];
-    c1_4 [fillcolor="white"];
-    c1_5 [fillcolor="black"];
+    c1_0 [fillcolor="black" label=""];
+    c1_1 [fillcolor="green" label=""];
+    c1_2 [fillcolor="white" label=""];
+    c1_3 [fillcolor="white" label=""];
+    c1_4 [fillcolor="white" label=""];
+    c1_5 [fillcolor="black" label=""];
   }
   { rank=same; 
-    c2_0 [fillcolor="black"];
-    c2_1 [fillcolor="white"];
-    c2_2 [fillcolor="black"];
-    c2_3 [fillcolor="black"];
-    c2_4 [fillcolor="white"];
-    c2_5 [fillcolor="black"];
+    c2_0 [fillcolor="black" label=""];
+    c2_1 [fillcolor="white" label=""];
+    c2_2 [fillcolor="black" label=""];
+    c2_3 [fillcolor="black" label=""];
+    c2_4 [fillcolor="white" label=""];
+    c2_5 [fillcolor="black" label=""];
   }
   { rank=same; 
-    c3_0 [fillcolor="black"];
-    c3_1 [fillcolor="white"];
-    c3_2 [fillcolor="black"];
-    c3_3 [fillcolor="black"];
-    c3_4 [fillcolor="red"];
-    c3_5 [fillcolor="black"];
+    c3_0 [fillcolor="black" label=""];
+    c3_1 [fillcolor="white" label=""];
+    c3_2 [fillcolor="black" label=""];
+    c3_3 [fillcolor="black" label=""];
+    c3_4 [fillcolor="red" label="15"];
+    c3_5 [fillcolor="black" label=""];
   }
   { rank=same; 
-    c4_0 [fillcolor="black"];
-    c4_1 [fillcolor="blue"];
-    c4_2 [fillcolor="white"];
-    c4_3 [fillcolor="white"];
-    c4_4 [fillcolor="gray"];
-    c4_5 [fillcolor="black"];
+    c4_0 [fillcolor="black" label=""];
+    c4_1 [fillcolor="blue" label=""];
+    c4_2 [fillcolor="white" label=""];
+    c4_3 [fillcolor="white" label=""];
+    c4_4 [fillcolor="gray" label=""];
+    c4_5 [fillcolor="black" label=""];
   }
   { rank=same; 
-    c5_0 [fillcolor="black"];
-    c5_1 [fillcolor="black"];
-    c5_2 [fillcolor="black"];
-    c5_3 [fillcolor="black"];
-    c5_4 [fillcolor="black"];
-    c5_5 [fillcolor="black"];
+    c5_0 [fillcolor="black" label=""];
+    c5_1 [fillcolor="black" label=""];
+    c5_2 [fillcolor="black" label=""];
+    c5_3 [fillcolor="black" label=""];
+    c5_4 [fillcolor="black" label=""];
+    c5_5 [fillcolor="black" label=""];
   }
   c0_0 -> c0_1 [style=invis];
   c0_1 -> c0_2 [style=invis];
@@ -112,7 +112,9 @@ digraph Malla {
   c4_3 -> c5_3 [style=invis];
   c4_4 -> c5_4 [style=invis];
   c4_5 -> c5_5 [style=invis];
+  c2_1 [style=filled, fillcolor="gold", fontcolor="black"];
   c1_1 -> c2_1 [color="gold", penwidth=6, arrowhead=none, constraint=false];
+  c3_1 [style=filled, fillcolor="gold", fontcolor="black"];
   c2_1 -> c3_1 [color="gold", penwidth=6, arrowhead=none, constraint=false];
   c3_1 -> c4_1 [color="gold", penwidth=6, arrowhead=none, constraint=false];
 }

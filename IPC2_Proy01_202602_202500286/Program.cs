@@ -227,6 +227,7 @@ public class Sistema {
     {
         //DATOS DE LA CIUDAD
         NodoCeldas dfs = ciudad.PrimeraCelda; //Celda de referencia para dfs (no es la inicial)
+        Misiones Grafica = new Misiones();
         int TamanioMapa = ciudad.filas * ciudad.columnas;
         Random rnd = new Random();
         int NoEntradas = ListaEntradas.NoElementos();
@@ -283,6 +284,10 @@ public class Sistema {
         }
         NodoCeldas Recurso = ListaRecursos.Buscar(NoRecurso).valor;
 
-        dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, Recurso, Robot.capcomb, mision);
+        Listas<NodoCeldas> ListaCamino = dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, Recurso, Robot.capcomb, mision);
+        string ArchivoDot = Grafica.GenerarDot(ciudad.PrimeraCelda, ListaCamino);
+        string RutaImgs = "C:\\Users\\Dell\\Documents\\Universidad\\IPC2\\Proyecto1\\IPC2_Proy01_202602_202500286\\Modelado Misiones\\mision_extraccion.png";
+        Grafica.GenerarImagenMision(ArchivoDot, RutaImgs);
+        Process.Start(new ProcessStartInfo(RutaImgs) { UseShellExecute = true });
     }
 }

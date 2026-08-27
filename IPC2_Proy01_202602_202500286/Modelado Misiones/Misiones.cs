@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection.Emit;
 using System.Text;
 
 namespace IPC2_Proy01_202602_202500286.Modelado_Misiones
@@ -36,6 +37,7 @@ namespace IPC2_Proy01_202602_202500286.Modelado_Misiones
                     idsFilaActual.Insertar(id);
 
                     string color = "";
+                    string label = "";
                     if (actual.celda.tipo.Equals('*'))
                     {
                         color = "black";
@@ -49,6 +51,7 @@ namespace IPC2_Proy01_202602_202500286.Modelado_Misiones
                         color = "blue";
                     }else if (actual.celda.tipo.Equals('U'))
                     {
+                        label = actual.celda.capcomb.ToString() ;
                         color = "red";
                     }else if (actual.celda.tipo.Equals('E'))
                     {
@@ -56,7 +59,7 @@ namespace IPC2_Proy01_202602_202500286.Modelado_Misiones
                     }
 
                     sb.AppendLine();
-                    sb.Append($"    {id} [fillcolor=\"{color}\"];");
+                    sb.Append($"    {id} [fillcolor=\"{color}\" label=\"{label}\"];");
 
                     actual = actual.Derecha;
                     c++;
@@ -111,9 +114,14 @@ namespace IPC2_Proy01_202602_202500286.Modelado_Misiones
                 while (nodo != null)
                 {
                     string idActual = $"c{nodo.valor.celda.fila}_{nodo.valor.celda.columna}";
+
+                    if(nodo.valor.celda.tipo.Equals(' '))
+                    {
+                        sb.AppendLine($"  {idActual} [style=filled, fillcolor=\"gold\", fontcolor=\"black\"];");
+                    }
+
                     if (idAnterior != null)
                         sb.AppendLine($"  {idAnterior} -> {idActual} [color=\"gold\", penwidth=6, arrowhead=none, constraint=false];");
-
                     idAnterior = idActual;
                     nodo = nodo.siguiente;
                 }
