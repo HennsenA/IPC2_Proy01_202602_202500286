@@ -217,6 +217,22 @@ public class Sistema {
 
         Listas<NodoCeldas> ListaCamino = dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, Civil, Robot.capcomb, mision);
 
+        string Estado = "Mision Imposible";
+        if (ListaCamino.NoElementos() > 0)
+        {
+            Estado = "Mision Completada!";
+        }
+
+        Console.WriteLine($"""
+
+                Resultados de la Mision
+                Estado: {Estado}
+                Tipo de Unidad: Unidad Civil
+                Fila: {Civil.celda.fila + 1}
+                Columna: {Civil.celda.columna + 1}
+                Robot Utilizado: {Robot.nombre} (ChapinRescue)
+                """);
+
         string ArchivoDot = Grafica.GenerarDot(ciudad.PrimeraCelda, ListaCamino);
         string RutaImgs = "C:\\Users\\Dell\\Documents\\Universidad\\IPC2\\Proyecto1\\IPC2_Proy01_202602_202500286\\Modelado Misiones\\mision_rescate.png";
         Grafica.GenerarImagenMision(ArchivoDot, RutaImgs);
@@ -285,6 +301,23 @@ public class Sistema {
         NodoCeldas Recurso = ListaRecursos.Buscar(NoRecurso).valor;
 
         Listas<NodoCeldas> ListaCamino = dfs.Dfs(TamanioMapa, ListaEntradas.Buscar(rnd.Next(NoEntradas)).valor, Recurso, Robot.capcomb, mision);
+
+        string Estado="Mision Imposible";
+        if(ListaCamino.NoElementos() > 0)
+        {
+            Estado = "Mision Completada!";
+        }
+
+        Console.WriteLine($"""
+
+                Resultados de la Mision
+                Estado: {Estado}
+                Tipo de Unidad: Recurso
+                Fila: {Recurso.celda.fila + 1}
+                Columna: {Recurso.celda.columna + 1}
+                Robot Utilizado: {Robot.nombre} (ChapinFighter)
+                """);
+
         string ArchivoDot = Grafica.GenerarDot(ciudad.PrimeraCelda, ListaCamino);
         string RutaImgs = "C:\\Users\\Dell\\Documents\\Universidad\\IPC2\\Proyecto1\\IPC2_Proy01_202602_202500286\\Modelado Misiones\\mision_extraccion.png";
         Grafica.GenerarImagenMision(ArchivoDot, RutaImgs);

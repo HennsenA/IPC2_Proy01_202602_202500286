@@ -1,4 +1,5 @@
-﻿using IPC2_Proy01_202602_202500286.TDA_s;
+﻿using IPC2_Proy01_202602_202500286.Modelo;
+using IPC2_Proy01_202602_202500286.TDA_s;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -59,19 +60,19 @@ namespace IPC2_Proy01_202602_202500286.Modelado_Misiones
                     }
 
                     sb.AppendLine();
-                    sb.Append($"    {id} [fillcolor=\"{color}\" label=\"{label}\"];");
+                    sb.Append($"    {id} [fillcolor=\"{color}\" label=\"{label}\" fontcolor=\"white\" fontname=\"Arial\"];");
 
                     actual = actual.Derecha;
                     c++;
                 }
-                sb.AppendLine();
+
                 sb.AppendLine("  }");
 
                 idsPorFila.Insertar(idsFilaActual);
                 inicioFila = inicioFila.Abajo;
                 f++;
             }
-
+                
             // 2. Aristas invisibles horizontales (izquierda -> derecha dentro de cada fila)
             var nodoFila = idsPorFila.inicio;
             while (nodoFila != null)

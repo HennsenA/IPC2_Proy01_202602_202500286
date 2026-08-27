@@ -104,8 +104,6 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 Console.WriteLine($"({nodo.celda.fila+1},{nodo.celda.columna+1}) capcomb: {nodo.celda.capcomb}");
             }
 
-            Console.WriteLine();
-
             return ListaCamino;
         }
     }

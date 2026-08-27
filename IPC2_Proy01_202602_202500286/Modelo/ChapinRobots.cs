@@ -6,9 +6,9 @@ namespace IPC2_Proy01_202602_202500286.Modelo
 {
     public class ChapinRobots
     {
-        private String nombre { get; set; }
+        public String nombre { get; set; }
         public int capcomb { get; set; }
-        private bool estado { get; set; }
+        public bool estado { get; set; }
 
         public ChapinRobots(String nombre, int capcomb)
         {
