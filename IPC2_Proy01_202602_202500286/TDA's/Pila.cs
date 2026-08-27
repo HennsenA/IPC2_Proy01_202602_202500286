@@ -60,5 +60,10 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 return nodo;
             }
         }
+
+        public void VaciarPila()
+        {
+            tope = -1;
+        }
     }
 }

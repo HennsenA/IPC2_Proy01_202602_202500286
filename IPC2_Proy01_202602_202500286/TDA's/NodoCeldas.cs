@@ -81,6 +81,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             }
 
             Console.WriteLine("Misión Imposible");
+            pila.VaciarPila();
             return ListaCamino=new Listas<NodoCeldas>();
         }
 
@@ -104,6 +105,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 Console.WriteLine($"({nodo.celda.fila+1},{nodo.celda.columna+1}) capcomb: {nodo.celda.capcomb}");
             }
 
+            camino.VaciarPila();
             return ListaCamino;
         }
     }
