@@ -88,7 +88,7 @@ namespace IPC2_Proy01_202602_202500286.Modelo
             int fila = UnidadMilitar.fila;
             int columna = UnidadMilitar.columna;
 
-            Console.WriteLine($"fila: {fila}, columna: {columna}, capacidad: {UnidadMilitar.capcomb}");
+            //Console.WriteLine($"fila: {fila}, columna: {columna}, capacidad: {UnidadMilitar.capcomb}");
 
             NodoCeldas inicioFila = PrimeraCelda;
 

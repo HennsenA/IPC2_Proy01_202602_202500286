@@ -91,11 +91,14 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 actual = actual.Padre;
             }
 
+            Console.WriteLine("Camino Encontrado:");
             while (!camino.PilaVacia())
             {
                 NodoCeldas nodo = camino.Pop();
                 Console.WriteLine($"({nodo.celda.fila+1},{nodo.celda.columna+1}) capcomb: {nodo.celda.capcomb}");
             }
+
+            Console.WriteLine();
         }
     }
 }

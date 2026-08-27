@@ -36,6 +36,16 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 
         public virtual void ImprimirNodo()
         {
+            var actual = inicio;
+            int n = 0;
+
+            while (actual != null)
+            {
+                n++;
+                Console.WriteLine("===Elemento No. " + n);
+                Console.WriteLine(actual.valor.ToString());
+                actual = actual.siguiente;
+            }
         }
 
         public Nodo<T> Buscar(int indice)
