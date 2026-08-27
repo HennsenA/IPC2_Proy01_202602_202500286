@@ -63,6 +63,10 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 
         public void VaciarPila()
         {
+            for (int i=0; i<maxsize; i++)
+            {
+                nodos[i] = null;
+            } 
             tope = -1;
         }
     }

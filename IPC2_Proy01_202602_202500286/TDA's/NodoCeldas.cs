@@ -25,6 +25,7 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
 
         public Listas<NodoCeldas> Dfs(int MaxSize, NodoCeldas CeldaInicio, NodoCeldas CeldaDestino, int CapacidadR, int mision)
         {
+            CeldaInicio.Padre = null;
             Misiones Grafica = new Misiones();
             Pila pila = new Pila(MaxSize);
             Listas<NodoCeldas> visitados = new Listas<NodoCeldas>();
@@ -80,7 +81,6 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                 }
             }
 
-            Console.WriteLine("Misión Imposible");
             pila.VaciarPila();
             return ListaCamino=new Listas<NodoCeldas>();
         }
