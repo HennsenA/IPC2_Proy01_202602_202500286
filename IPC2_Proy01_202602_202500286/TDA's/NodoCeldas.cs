@@ -23,15 +23,15 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
             this.Padre = null;
         }
 
-        public Listas<NodoCeldas> Dfs(int MaxSize, NodoCeldas CeldaInicio, NodoCeldas CeldaDestino, int CapacidadR, int mision)
+        public Listas<NodoCeldas> Bfs(int MaxSize, NodoCeldas CeldaInicio, NodoCeldas CeldaDestino, int CapacidadR, int mision)
         {
             CeldaInicio.Padre = null;
             Misiones Grafica = new Misiones();
-            Pila pila = new Pila(MaxSize);
+            Cola<NodoCeldas> cola = new Cola<NodoCeldas>(MaxSize);//En vez de pila, cola
             Listas<NodoCeldas> visitados = new Listas<NodoCeldas>();
             Listas<NodoCeldas> ListaCamino;
             int CapacidadRestante = CapacidadR;
-            pila.Push(CeldaInicio);
+            cola.Encolar(CeldaInicio);
             visitados.Insertar(CeldaInicio);
 
             /*Console.WriteLine(
@@ -41,9 +41,9 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                         Columna: {CeldaDestino.celda.columna}
                     """);*/
 
-            while (!pila.PilaVacia())
+            while (!cola.ColaVacia())
             {
-                NodoCeldas actual = pila.Pop();
+                NodoCeldas actual = cola.Desencolar();
 
                 /*Console.WriteLine(
                     $"""
@@ -76,36 +76,36 @@ namespace IPC2_Proy01_202602_202500286.TDA_s
                     { 
                         vecino.Padre = actual; 
                         visitados.Insertar(vecino);
-                        pila.Push(vecino);
+                        cola.Encolar(vecino);
                     }
                 }
             }
 
-            pila.VaciarPila();
+            cola.VaciarCola();
             return ListaCamino=new Listas<NodoCeldas>();
         }
 
         private Listas<NodoCeldas> MostrarCamino(NodoCeldas destino, int MaxSize)
         {
             Listas<NodoCeldas> ListaCamino = new Listas<NodoCeldas>();
-            Pila camino = new Pila(MaxSize);
+            Cola<NodoCeldas> camino = new Cola<NodoCeldas>(MaxSize);
             NodoCeldas actual = destino;
 
             while (actual != null)
             {
-                camino.Push(actual);
+                camino.Encolar(actual);
                 actual = actual.Padre;
             }
 
             Console.WriteLine("Camino Encontrado:");
-            while (!camino.PilaVacia())
+            while (!camino.ColaVacia())
             {
-                NodoCeldas nodo = camino.Pop();
+                NodoCeldas nodo = camino.Desencolar();
                 ListaCamino.Insertar(nodo);
                 Console.WriteLine($"({nodo.celda.fila+1},{nodo.celda.columna+1}) capcomb: {nodo.celda.capcomb}");
             }
 
-            camino.VaciarPila();
+            camino.VaciarCola();
             return ListaCamino;
         }
     }
